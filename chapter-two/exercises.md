@@ -70,3 +70,57 @@ a) f x = x / 2 + 9
 b) f x = x / (2 + 9)
 ```
 > Yes, it changes, because of precedence on / against +
+
+## A Head Code
+
+1. `let x = 5 in x`
+> Should return 5, returns 5
+
+2. `let x = 5 in x * 5`
+> Should return 25, returns 25
+
+3. `let x = 5; y = 6 in x * y`
+> Should return 30, returns 30
+
+4. `let x = 3; y = 1000 in x + 3`
+> Should return 6, returns 6
+
+-----
+
+**Rewrite with where**
+
+1. `let x = 3; y = 1000 in x * 3 + y`
+
+```haskell
+mult1 = x * 3 + y
+  where x = 5
+        y = 1000
+```
+> 1015
+
+2. `let y = 10; x = 10 * 5 + y in x * 5`
+
+```haskell
+mult2 = x * 5
+  where y = 10
+        x = 10 * 5 + y
+```
+> 300
+
+3.
+
+```haskell
+let x = 7
+    y = negate x
+    z = y * 10
+in z / x + y
+```
+
+```haskell
+mult3 = z / x + y
+  where x = 7
+        y = negate x
+        z = y * 10
+```
+
+> -17
