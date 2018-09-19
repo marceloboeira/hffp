@@ -28,3 +28,18 @@ mult3 = z / x + y
   where x = 7
         y = negate x
         z = y * 10
+
+-- Chapter Exercises
+-- 4.
+waxOn = x * 5
+  where z = 7
+        y = z + 8
+        x = y ^ 2
+-- 5.
+triple x = x * 3
+
+-- 6.
+waxOff x = triple x
+
+-- 7.
+waxOff' x = half . triple . square $ x

@@ -124,3 +124,82 @@ mult3 = z / x + y
 ```
 
 > -17
+
+## Chapter Exercises
+
+### Parenthesization
+
+```haskell
+-- example
+2 + 2 * 3 - 3
+2 + (2 * 3) - 3
+
+-- 1
+2 + 2 * 3 - 1
+2 + (2 * 3) - 1
+
+-- 2
+(^) 10 $ 1 + 1
+10 ^ (1 + 1)
+
+-- 3
+2 ^ 2 * 4 ^ 5 + 1
+((2 ^ 2) * (4 ^ 5)) + 1
+-- or
+(+) 1 $ (*) ((^) 2 2) ((^) 4 5)
+```
+
+### Equivalent expressions
+
+```haskell
+-- 1 - yes
+1 + 1
+2
+
+-- 2 - yes
+10 ^ 2 -- = 100
+10 + 9 * 10 -- = 10  + 90 = 100
+
+-- 3 - no (subtraction is not commutative)
+400 - 37 -- = 363
+(-) 37 400 -- = -363
+
+-- 4 - no (numerical types)
+100 `div` 3 -- force integral dividison = 33
+100 / 3 -- floating point division = 33.33336
+
+-- 5 - no (prededence order)
+2 * 5 + 18 -- = 28
+2 * (5 + 18) -- = 46
+```
+
+### More fun with functions
+```haskell
+-- need to reorder first...
+let z = 7
+let y = z + 8
+let x = y ^ 2
+let waxOn = x * 5
+
+(+10) waxOn
+-- 1135
+10 + waxOn
+-- 1135
+(+10) waxOn
+-- 1135
+(-) 15 waxOn
+-- -1110
+(-) waxOn 15
+-- 1110
+-- I guess the catch was the subtraction not being commutative
+
+let triple x = x * 3
+triple waxOn
+-- 3375
+-- I'm supposed to check my understanding, I guess the catch is that the x on the triple scope is independent of the global x, since the lexical scope changed, triple uses a local x and not the global one, whereas waxOn uses the one defined on prelude
+
+let waxOff x = triple x
+
+let waxOff' x = half . triple . square $ x
+...
+```
