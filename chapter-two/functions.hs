@@ -6,4 +6,4 @@ square' = flip (^) 2
 
 -- circleAreaWith x = 3.14 * square x (commented in favor of using pi from Prelude)
 circleAreaWith x = pi * square x
-circleAreaWith' =  ((*) pi) . square'
+circleAreaWith' =  (* pi) . square'
