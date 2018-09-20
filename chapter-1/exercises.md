@@ -1,5 +1,5 @@
-# CHAPTER1
- λ
+# Chapter 1
+ 
 ## Equivalence Exercises
 
 1. λxy.xz - answer: b - λmn.mz

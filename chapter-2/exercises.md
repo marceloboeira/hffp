@@ -1,4 +1,6 @@
-## Expressions & Functions
+# Chapter 2
+
+## Expressions & Functions Exercises
 
 1. Convert to GHCI/REPL usage
 
