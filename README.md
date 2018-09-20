@@ -1,4 +1,4 @@
-# hffp
+# λ hffp
 > My notepad for the Haskell From First Principles book
 
 At the moment, this is not really useful for anyone besides myself.
