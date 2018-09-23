@@ -19,16 +19,16 @@ length is a function that takes a list and returns a result that tells how many 
 
 1.
 
-a) `lenght :: [a] -> Integer`
-b) Takes 1 argument, the "list/array/collection" itself
-c) It results in a "Int/Integer" number
+* a) `lenght :: [a] -> Integer`
+* b) Takes 1 argument, the "list/array/collection" itself
+* c) It results in a "Int/Integer" number
 
 2.
 
-a) `length [1, 2, 3, 4, 5]` -> `5`
-b) `length [(1, 2), (2, 3), (3, 4)]` -> `3`
-c) `length allAwesome` -> `2`
-d) `length (concat allAwesome)` -> `5`
+* a) `length [1, 2, 3, 4, 5]` -> `5`
+* b) `length [(1, 2), (2, 3), (3, 4)]` -> `3`
+* c) `length allAwesome` -> `2`
+* d) `length (concat allAwesome)` -> `5`
 
 3.
 
