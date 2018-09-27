@@ -13,6 +13,7 @@ If at some point I believe this has a value to someone but me, I will update thi
 * [Chapter 2](chapter-2/exercises.md)
 * [Chapter 3](chapter-3/exercises.md)
 * [Chapter 4](chapter-4/exercises.md)
+* [Chapter 5](chapter-5/exercises.md)
 
 ## Docs
 

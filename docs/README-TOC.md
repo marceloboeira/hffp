@@ -2,3 +2,4 @@
 * [Chapter 2](chapter-2/exercises.md)
 * [Chapter 3](chapter-3/exercises.md)
 * [Chapter 4](chapter-4/exercises.md)
+* [Chapter 5](chapter-5/exercises.md)
