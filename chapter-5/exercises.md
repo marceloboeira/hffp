@@ -72,3 +72,248 @@ right x y = y
 right :: a -> b -> b
 right x y = y
 ```
+
+# Apply Yourself
+
+1. `(++) :: [a] -> [a] -> [a]`
+
+```haskell
+myConcat x = x ++ " yo"
+```
+
+It starts as a generic array of any type `[a]`, and it changes to be an specific concat of `[Char]`:
+```haskell
+myConcat :: [Char] -> [Char]
+```
+
+2. `(*) :: Num a => a -> a -> a`
+
+```haskell
+myMult x = (x / 3) * 5
+```
+It starts as a generic `Num a` kind of type, it gets narrow down to `Fractional a` because of the `/3`.
+```Haskell
+myMult :: Fractional a => a -> a
+```
+
+3. `take :: Int -> [a] -> [a]`
+
+```haskell
+myTake x = take x "hey you"
+```
+Since it takes from an specific array of char, the new signature is less generic, e.g.:
+```haskell
+myTake :: Int -> [Char]
+```
+
+4. `(>) :: Ord a => a -> a -> Bool`
+
+```haskell
+myCom x = x > (length [1..10])
+```
+It focuses on getting the `Int` comparinson only:
+```haskell
+myCom :: Int -> Bool
+```
+
+5. `(<) :: Ord a => a -> a -> Bool`
+```haskell
+myAlph x = x < 'z'
+```
+It focuses on getting the `Char` comparinson only:
+```haskell
+myAlph :: Char -> Bool
+```
+
+## Chapter Exercises
+
+### Multiple Choice
+1. c) a list whose elements are all of some type `a`
+2. a) take a list of strings as an argument
+3. b) returns one element of type `a` from a list
+4. c) takes a tuple argument and returns the first value
+
+### Determine the Type
+
+1.
+
+* a) `Num a => a`
+* b) `Num a => (a, [Char])`
+* c) `(Integer, [Char])`
+* d) `Bool`
+* e) `Int`
+* f) `Bool`
+
+2. `Num a => a`
+
+3. `Fractional a => a`
+
+4. `[Char]`
+
+### Does it compile?
+
+1.
+```haskell
+bigNum = (^) 5 $ 10
+wahoo = bigNum $ 10
+```
+No, bigNum must be a function
+
+```haskell
+bigNum = (^) 5
+wahoo = bigNum $ 10
+```
+
+2.
+```haskell
+x = print
+y = print "woohoo!"
+z = x "hello world"
+```
+Yes.
+
+3.
+```haskell
+a = (+)
+b = 5
+c = b 10
+d = c 200
+```
+
+No, missing the use of (+) function
+```haskell
+a = (+)
+b = a 5
+c = b 10
+d = c 200
+```
+
+4.
+```haskell
+a = 0
+c = 12 + a
+b = 10000 * c
+```
+
+### Type variable or specific type constructor?
+
+1.
+```haskell
+f :: Num a => a -> b -> Int -> Int`
+         --  [0]  [1]   [2]    [3]
+```
+
+* 0 -> Constrained
+* 1 -> Fully
+* 2 -> Concrete
+* 3 -> Concrete
+
+2.
+```haskell
+f :: zed -> Zed -> Blah
+```
+
+* 0 -> Fully
+* 1 -> Concrete
+* 2 -> Concrete
+
+3.
+```haskell
+f :: Enum b => a -> b -> C
+```
+
+* 0 -> Fully
+* 1 -> Constrained
+* 2 -> Concrete
+
+4.
+```haskell
+f :: f -> g -> C
+```
+
+* 0 -> Fully
+* 1 -> Fully
+* 2 -> Concrete
+
+### Write a type signature
+
+1.
+```haskell
+functionH :: [a] -> a
+functionH (x:_) = x
+```
+
+2.
+```haskell
+functionC :: (Ord a) => a -> a -> Bool
+functionC x y = if (x > y) then True else False
+```
+
+3.
+```haskell
+functionS :: (a, b) -> b
+functionS (x, y) = y
+```
+
+### Given a type, write the function
+
+1.
+```haskell
+i :: a -> a
+i = a
+```
+
+2.
+```haskell
+c :: a -> b -> a
+c x y = x
+```
+
+3.
+```haskell
+c'' :: b -> a -> b
+c'' x y = x
+```
+
+4.
+```haskell
+c' :: a -> b -> b
+c' x y = y
+```
+
+5.
+```haskell
+r :: [a] -> [a]
+r (x:xs) = xs --tail
+```
+
+6.
+```haskell
+co :: (b -> c) -> (a -> b) -> a -> c
+co f g x = f $ g x
+```
+
+7.
+```haskell
+a :: (a -> c) -> a -> a
+a f x = a
+```
+
+8.
+```haskell
+a' :: (a -> b) -> a -> b
+a' f a = f a
+```
+
+### Fix it
+
+1. `Sing.hs`
+2. `SingAnother.hs`
+3. `Arith3Broken.hs`
+
+### Type-Kwon-Do
+
+1. `TypeKwonDo_1.hs`
+2. `TypeKwonDo_2.hs`
+3. `TypeKwonDo_3.hs`
+4. `TypeKwonDo_4.hs`
