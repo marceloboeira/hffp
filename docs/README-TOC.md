@@ -4,3 +4,4 @@
 * [Chapter 4](chapter-4/exercises.md)
 * [Chapter 5](chapter-5/exercises.md)
 * [Chapter 6](chapter-6/exercises.md)
+* [Chapter 7](chapter-7/exercises.md)
