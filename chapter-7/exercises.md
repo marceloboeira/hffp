@@ -141,3 +141,128 @@ oneIsOne 3 -- Num a => a --> 31
 -- 11.
 oneIsTwo 3 -- Num a => a --> 23
 ```
+
+## Guard Duty
+
+```haskell
+avgGrade :: (Fractional a, Ord a) => a -> Char
+avgGrade x
+  | y >= 0.9  = 'A'
+  | y >= 0.8  = 'B'
+  | y >= 0.7  = 'C'
+  | y >= 0.59 = 'D'
+  | y < 0.59  = 'F'
+  where y = x / 100
+```
+
+1.
+```haskell
+avgGrade x
+  | otherwise = 'O'
+  | y >= 0.9  = 'A'
+  | y >= 0.8  = 'B'
+  | y >= 0.7  = 'C'
+  | y >= 0.59 = 'D'
+  | y < 0.59  = 'F'
+  where y = x / 100
+
+avgGrade 90 -- 'O'
+avgGrade 75 -- 'O'
+avgGrade 60 -- 'O'
+```
+
+2.
+```haskell
+avgGrade x
+  | y >= 0.7  = 'C'
+  | y >= 0.9  = 'A'
+  | y >= 0.8  = 'B'
+  | y >= 0.59 = 'D'
+  | y < 0.59  = 'F'
+  where y = x / 100
+
+avgGrade 90 -- 'C' instead of 'A'
+```
+It evaluates the guard with 'C', changing the program expected behavior.
+
+3.
+```haskell
+pal xs
+  | xs == reverse xs = True
+  | otherwise = False
+```
+
+b) `True` when xs is a palindrome
+
+4. `pal` takes `[a]`.
+
+5.  `[a] -> bool`
+
+6.
+```haskell
+numbers x
+  | x <  0 = -1
+  | x == 0 =  0
+  | x >  0 =  1
+```
+c) an indication of whether its argument is a positive or negative number or zero
+
+7. It takes `(Num a, Ord a) => a`
+
+8. `(Num a, Ord a, Num b) => a -> b`
+
+## Chapter Exercises
+
+### Multiple choice
+
+1. d) may resolve to values of different types, depending on inputs
+2. b) `Char -> [String]`
+3. d) `(Ord a, Num a) => a -> Bool`
+4. b) is a higher-order function
+5. a) `f True :: Bool`
+
+### Let's write code
+
+1.
+```haskell
+tensDigit :: Integral a => a -> a
+tensDigit x = d
+  where xLast = x `div` 10
+        d = xLast `mod` 10
+```
+
+* a) `tensDigit x = fst $ divMod x 10`
+* b) Yes, both have `Integral => a -> a`
+* c)
+```haskell
+hunsD x = fst $ divMod x 100
+```
+
+2.
+
+```haskell
+-- Guard
+foldBool :: a -> a -> Bool -> a
+foldBool a b x
+  | x == True = a
+  | x == False = b
+
+-- If/Else
+foldBool2 :: a -> a -> Bool -> a
+foldBool2 a b x = if x then a else b
+
+-- Pattern Matching
+foldBool3 :: a -> a -> Bool -> a
+foldBool3 a _ True = a
+foldBool3 _ b False = b
+```
+
+3.
+```haskell
+g :: (a -> b) -> (a, c) -> (b, c)
+g f (a, c) = (f a, c)
+```
+
+4. See `arith4.hs`
+5. See `arith4.hs`
+6. See `arith4.hs`
