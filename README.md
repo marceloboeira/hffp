@@ -9,16 +9,16 @@ If at some point I believe this has a value to someone but me, I will update thi
 
 ## Table of Contents
 
-* [Chapter 1](chapter-1/exercises.md)
-* [Chapter 2](chapter-2/exercises.md)
-* [Chapter 3](chapter-3/exercises.md)
-* [Chapter 4](chapter-4/exercises.md)
-* [Chapter 5](chapter-5/exercises.md)
-* [Chapter 6](chapter-6/exercises.md)
-* [Chapter 7](chapter-7/exercises.md)
-* [Chapter 8](chapter-8/exercises.md)
-* [Chapter 9](chapter-9/exercises.md)
-* [Chapter 10](chapter-10/exercises.md)
+* [Chapter 1](chapters/chapter-1/exercises.md)
+* [Chapter 2](chapters/chapter-2/exercises.md)
+* [Chapter 3](chapters/chapter-3/exercises.md)
+* [Chapter 4](chapters/chapter-4/exercises.md)
+* [Chapter 5](chapters/chapter-5/exercises.md)
+* [Chapter 6](chapters/chapter-6/exercises.md)
+* [Chapter 7](chapters/chapter-7/exercises.md)
+* [Chapter 8](chapters/chapter-8/exercises.md)
+* [Chapter 9](chapters/chapter-9/exercises.md)
+* [Chapter 10](chapters/chapter-10/exercises.md)
 
 ## Docs
 
