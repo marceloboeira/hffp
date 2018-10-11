@@ -57,3 +57,40 @@ cattyConny (frappe "pink") (cattyConny "green" (appedCatty "blue")) -- "pink mro
 -- 6.
 cattyConny (flippy "Pugs" "are") "awesome" -- "are mrow Pugs mrow awesome"
 ```
+
+### Recursion
+
+1.
+```
+--- Exercise 1
+  -- num    d c
+  -- 15     2 0
+  -- (15-2) 2 1
+  -- (13-2) 2 2
+  -- (11-2) 2 3
+  -- (09-2) 2 4
+  -- (07-2) 2 5
+  -- (05-2) 2 6
+  -- (03-2) 2 7
+  -- (01-2) 2 7 returns (7, 1)
+```
+
+Exercises 2 & 3 can be found in the `recursion.hs` file.
+
+### Fixing dividedBy
+
+Exercises can be found in the `recursion.hs` file.
+
+### McCarthy 91
+
+Can be found in the `mc.hs` file.
+
+### Numbers Into Words
+
+Can be found in the `WordNumber.hs` file.
+
+Usage:
+```haskell
+wordNumber 12324546
+"one-two-three-two-four-five-four-six"
+```
