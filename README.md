@@ -18,6 +18,7 @@ If at some point I believe this has a value to someone but me, I will update thi
 * [Chapter 7](chapter-7/exercises.md)
 * [Chapter 8](chapter-8/exercises.md)
 * [Chapter 9](chapter-9/exercises.md)
+* [Chapter 10](chapter-10/exercises.md)
 
 ## Docs
 

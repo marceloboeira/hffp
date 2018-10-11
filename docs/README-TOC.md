@@ -7,3 +7,4 @@
 * [Chapter 7](chapter-7/exercises.md)
 * [Chapter 8](chapter-8/exercises.md)
 * [Chapter 9](chapter-9/exercises.md)
+* [Chapter 10](chapter-10/exercises.md)
