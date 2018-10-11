@@ -16,8 +16,10 @@ digitToWord n
   | otherwise = "zero"
 
 digits :: Int -> [Int]
-digits 0 = []
-digits number =  digits(number `div` 10) ++ [number `mod` 10]
+digits n
+  | n == 0 = []
+  | n < 10 = [n]
+  | otherwise = digits (n `div` 10) ++ [n `mod` 10]
 
 wordNumber :: Int -> String
 wordNumber = concat . intersperse "-" . map digitToWord . digits
