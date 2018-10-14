@@ -52,3 +52,13 @@ length [(x, y) | x <- mySqr, y <- myCube, x < 50, y > 50]
 8. `take 1 $ filter odd [1, 3, undefined]` No
 9. `take 2 $ filter odd [1, 3, undefined]` No
 10. `take 3 $ filter odd [1, 3, undefined]` Yes
+
+### Intermission: Is it in normal form?
+
+1. `[1, 2, 3, 4, 5]` -> NF
+2. `1 : 2 : 3 : 4 : _` -> WHNF
+3. `enumFromTo 1 10` -> Neither, not a data constructor.
+4. `length [1, 2, 3, 4, 5]` -> Neither, not a data constructor.
+5. `sum (enumFromTo 1 10)` -> Neither, not a data constructor.
+6. `['a'..'m'] ++ ['n'..'z']`  -> Neither, not a data constructor.
+7. `(_, 'b')` -> WHNF, _, wasn't fully evaluated but it is a data constructor.
