@@ -90,3 +90,42 @@ The function takes a String and returns an array of Bool. `String -> [Bool]`, wh
 import Data.Bool
 map (\x -> bool x (-x) (x == 3)) [1..10]
 ```
+
+## Filtering
+
+1. `filter (\x -> (rem x 3) == 0) [1..30]`
+2. `length $ filter (\x -> (rem x 3) == 0) [1..30]`
+3.
+```haskell
+myFilter :: String -> [String]
+myFilter = filter (\w -> notElem w ["the", "a", "an"]) . words
+```
+
+```haskell
+myFilter "the brown dog was a goof"
+> ["brown","dog","was","goof"]
+```
+
+
+## Zipping exercises
+
+1.
+```haskell
+zip :: [a] -> [b] -> [(a, b)]
+zip _ [] = []
+zip [] _ = []
+zip (x:xs) (y:ys) = (x,y) : zip xs ys
+```
+
+2.
+```haskell
+zipWith :: (a -> b -> c) -> [a] -> [b] -> [c]
+zipWith _ [] _ = []
+zipWith _ _ [] = []
+zipWith f (x:xs) (y:ys) = f x y : zipWith f xs ys
+```
+
+3.
+```haskell
+zip = zipWith \x -> \y -> (x, y)
+```
