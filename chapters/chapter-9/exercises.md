@@ -62,3 +62,31 @@ length [(x, y) | x <- mySqr, y <- myCube, x < 50, y > 50]
 5. `sum (enumFromTo 1 10)` -> Neither, not a data constructor.
 6. `['a'..'m'] ++ ['n'..'z']`  -> Neither, not a data constructor.
 7. `(_, 'b')` -> WHNF, _, wasn't fully evaluated but it is a data constructor.
+
+## More Bottoms
+
+1. `take 1 $ map (+1) [undefined, 2, 3]` - It errors since `undefined` is in the first usage
+2. `take 1 $ map (+1) [1, undefined, 3]` - It works, returns `[2]` since we only take 1 from the list
+3. `take 2 $ map (+1) [1, undefined, 3]` - It errors, since `undefined` is taken
+
+Note: map only 'runs' for the amount of times it is forced to.
+
+4.
+```haskell
+itIsMystery xs = map (\x -> elem x "aeiou") xs
+```
+The function takes a String and returns an array of Bool. `String -> [Bool]`, where each bool represents the `Char` on the same position on the String, for being a vowel or not. e.g.:
+
+* `aaaa` -> `[True, True, True, True]`
+* `abab` -> `[True, False, True, False]`:w
+
+5.
+* a) `map (^2) [1..10]` -> `[1, 4, 9, 16, 25, 36, 49, 64, 81, 100]`
+* b) `map minimum [[1..10], [10..20], [20..30]]` -> `[1, 10, 20]`
+* c) `map sum [[1..5], [1..5], [1..5]]` -> `[15, 15, 15]`
+
+6.
+```haskell
+import Data.Bool
+map (\x -> bool x (-x) (x == 3)) [1..10]
+```
