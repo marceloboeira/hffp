@@ -129,3 +129,55 @@ zipWith f (x:xs) (y:ys) = f x y : zipWith f xs ys
 ```haskell
 zip = zipWith \x -> \y -> (x, y)
 ```
+
+## Chapter Exercises
+
+### Data.Char
+1.
+```haskell
+Prelude Data.Char> isUpper 'J'
+True
+Prelude Data.Char> toUpper 'j'
+'J'
+```
+2.
+```haskell
+import Data.Char
+
+fUp = filter (isUpper)
+fUp "HbEfLrLxO"` -- `"HELLO"`
+```
+
+3.
+```haskell
+import Data.Char
+
+captalize :: String -> String
+captalize (x:xs) = toUpper x : xs
+```
+
+4.
+```haskell
+import Data.Char
+
+makeUpper :: String -> String
+makeUpper = map toUpper
+-- or
+makeUpper "" = ""
+makeUpper (x:xs) = toUpper x : makeUpper xs
+```
+
+5.
+```haskell
+import Data.Char
+
+firstUpper :: String -> Char
+firstUpper x = toUpper (head x)
+```
+
+6.
+```haskell
+import Data.Char
+
+firstUpper = toUpper . head
+```
