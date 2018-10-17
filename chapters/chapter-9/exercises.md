@@ -181,3 +181,81 @@ import Data.Char
 
 firstUpper = toUpper . head
 ```
+
+
+### Writing your own standard functions
+
+````haskell
+-- Example
+myAnd :: [Bool] -> Bool
+myAnd [] = True
+myAnd (x:xs) = x && myAnd xs
+
+-- 1.
+myOr :: [Bool] -> Bool
+myOr [] = False
+myOr (x:xs)
+  | x == True = True
+  | otherwise = myOr xs
+
+-- 2.
+
+myAny :: (a -> Bool) -> [a] -> Bool
+myAny _ [] = False
+myAny f (x:xs)
+  | (f x) = True
+  | otherwise = myAny f xs
+
+-- 3.
+myElem :: Eq a => a -> [a] -> Bool
+myElem _ [] = False
+myElem e (x:xs)
+  | x == e = True
+  | otherwise = myElem e xs
+
+myElem' :: Eq a => a -> [a] -> Bool
+myElem' x = myAny (== x)
+
+-- 4.
+myReverse :: [a] -> [a]
+myReverse [] = []
+myReverse (x:xs) = (myReverse xs) ++ [x]
+
+-- 5.
+squish :: [[a]] -> [a]
+squish [] = []
+squish (x:xs) = x ++ squish xs
+
+-- 6.
+squishMap :: (a -> [b]) -> [a] -> [b]
+squishMap _ [] = []
+squishMap f (x:xs) = (f x) ++ squishMap f xs
+
+-- 7.
+squishAgain = squishMap (id)
+
+-- 8.
+myMaximumBy :: (a -> a -> Ordering) -> [a] -> a
+myMaximumBy _ (x:[]) = x
+myMaximumBy f (x:xs)
+  | r == LT = y
+  | otherwise = x
+  where y = (myMaximumBy f xs)
+        r = f x y
+
+-- 9.
+myMinimumBy :: (a -> a -> Ordering) -> [a] -> a
+myMinimumBy _ (x:[]) = x
+myMinimumBy f (x:xs)
+  | r == GT = y
+  | otherwise = x
+  where y = (myMinimumBy f xs)
+        r = f x y
+
+-- 10.
+myMaximum :: (Ord a) => [a] -> a
+myMaximum = myMaximumBy compare
+
+myMinimum :: (Ord a) => [a] -> a
+myMinimum = myMinimumBy compare
+```
