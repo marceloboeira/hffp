@@ -34,3 +34,7 @@ foldl (flip (*)) ((flip (*)) 1 1) [2, 3]
 * g) `foldl const 0 "tacos"`
 * h) `foldl const 0 "burritos"`
 * i) `foldl const 'z' [1..5]`
+
+## Database Processing
+
+`Database.hs`
