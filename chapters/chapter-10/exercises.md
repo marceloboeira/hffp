@@ -38,3 +38,51 @@ foldl (flip (*)) ((flip (*)) 1 1) [2, 3]
 ## Database Processing
 
 `Database.hs`
+
+## Scan Exercises
+
+--- TODO
+
+## Chapter Exercises
+
+### Warm-up and review
+
+1.
+a)
+
+```haskell
+warmUp stops vowels = [(x, y, z) | x <- stops, y <- vowels, z <- stops]
+```
+
+b)
+
+```haskell
+warmUp stops vowels = [(x, y, z) | x <- stops, y <- vowels, z <- stops, x == 'p']
+```
+
+c)
+
+```haskell
+warmUp nouns verbs = [(x, y, z) | x <- nouns, y <- verbs, z <- nouns]
+```
+
+2.
+
+```haskell
+seekritFunc x = div (sum (map length (words x))) (length (words x))
+```
+
+Apparently, it calculates the average length of the words of a text.
+
+3.
+
+```haskell
+avgWordLength :: Fractional a => String -> a
+avgWordLength x = (/) (sum (map length' (words x))) (length' (words x))
+  where length' = fromIntegral . length
+```
+
+
+### Rewrite with fold
+
+`rewrite.hs`
