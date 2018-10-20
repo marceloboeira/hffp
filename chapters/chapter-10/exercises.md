@@ -41,7 +41,27 @@ foldl (flip (*)) ((flip (*)) 1 1) [2, 3]
 
 ## Scan Exercises
 
---- TODO
+Examples
+```haskell
+fibs = 1 : scanl (+) 1 fibs
+fibsN x = fibs !! x
+```
+
+1.
+```haskell
+fibs = 1 : scanl (+) 1 fibs
+fibs20 = take 20 fibs
+```
+2.
+```haskell
+fibs = 1 : scanl (+) 1 fibs
+fibs100 = takeWhile (< 100) fibs
+```
+
+3.
+```haskell
+factorial = scanl (*) 1 [2..]
+```
 
 ## Chapter Exercises
 
