@@ -4,8 +4,8 @@
 
 1. `foldr (*) 1 [1..5]`
 
-* b) foldl (flip (*)) 1 [1..5]
-* c) foldl (*) 1 [1..5]
+* b) `foldl (flip (*)) 1 [1..5]`
+* c) `foldl (*) 1 [1..5]`
 
 Both return the same as the first one.
 
