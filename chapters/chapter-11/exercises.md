@@ -2,17 +2,26 @@
 
 ## Dog Types
 
+```haskell
+data Doggies a = Husky a | Mastiff a deriving (Eq, Show)
+```
+
+```haskell
+data PugType = PugData
+data HuskyType a = HuskyData
+data DogueDeBordeaux doge = DogueDeBordeaux doge
+```
 Given the datatypes defined in the above sections,
 
-1. Is Doggies a type constructor or a data constructor?
-2. What is the kind of Doggies?
-3. What is the kind of Doggies String?
-4. What is the type of Husky 10?
-5. What is the type of Husky (10 :: Integer)?
-6. What is the type of Mastiff "Scooby Doo"?
-7. Is DogueDeBordeaux a type constructor or a data constructor? Both?
-8. What is the type of DogueDeBordeaux? (DogueDeBordeaux a)
-9. What is the type of DogueDeBordeaux "doggie!" (DogueDeBordeaux String)
+1. type constructor
+2. `Doggies :: (* -> *)` since its waiting for a type
+3. `Doggies String :: *`
+4. `Husky 10 :: Num a => Doggies a`
+5. `Husky 10 :: Doggies a`
+6. `Mastiff "Scooby Doo" :: Doggies [Char]`?
+7. Both, it depends if you are referring to it on a type level or term level.
+8. `DogueDeBordeaux :: doge -> DogueDeBordeaux doge`
+9. `DogueDeBordeaux "doggie!" :: DogueDeBordeaux [Char]`
 
 ## Vehicles
 
