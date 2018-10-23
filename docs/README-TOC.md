@@ -9,3 +9,6 @@
 * [Chapter 9](chapters/chapter-9/exercises.md)
 * [Chapter 10](chapters/chapter-10/exercises.md)
 * [Chapter 11](chapters/chapter-11/exercises.md)
+* [Chapter 12](chapters/chapter-12/exercises.md)
+* [Chapter 13](chapters/chapter-13/exercises.md)
+* [Chapter 14](chapters/chapter-14/exercises.md)
