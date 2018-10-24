@@ -26,3 +26,37 @@ Given the datatypes defined in the above sections,
 ## Vehicles
 
 `vehicle.hs`
+
+## Cardinality
+
+1.
+
+`data PugType = PugData` ->  Cardinality is 1
+
+2.
+
+```haskell
+data Airline =
+             PapuAir
+           | CatapultsR'Us
+           | TakeYourChancesUnited
+```
+
+Cardinality is 3.
+
+3.
+
+Int16? (2^16)
+Cardinality is `65.536`
+
+4.
+
+* Int is actually Int64 (Cadinality is 1,844674407370955e19)
+* Integer is not bounded, it is essentially infinite (limited by the
+available memory)
+
+5.
+
+8 -> 8 bits = 2^8 = 256
+
+The 8 means that we use 8 bits to store the number, so In16 uses 16, Int32 uses 32, In64 uses 64.
