@@ -60,3 +60,23 @@ available memory)
 8 -> 8 bits = 2^8 = 256
 
 The 8 means that we use 8 bits to store the number, so In16 uses 16, Int32 uses 32, In64 uses 64.
+
+
+## For example
+
+```haskell
+data Example = MakeExample deriving Show
+```
+
+1. `MakeExample :: Example` && `Data constructor not in scope: Example`
+2. `Deriving Show?`
+3. See:
+
+```haskell
+data Example2 = MakeExample2 Int deriving Show
+```
+
+Checking the type
+```
+MakeExample2 :: Int -> Example2
+```
