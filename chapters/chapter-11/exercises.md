@@ -80,3 +80,7 @@ Checking the type
 ```
 MakeExample2 :: Int -> Example2
 ```
+
+## Logic Goats
+
+`goats.hs`
