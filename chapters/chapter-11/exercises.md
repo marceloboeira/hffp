@@ -84,3 +84,43 @@ MakeExample2 :: Int -> Example2
 ## Logic Goats
 
 `goats.hs`
+
+## Pitty Bool
+
+1. Cardinality is 4 (2 booleans)
+```haskell
+data BigSmall = Big Bool | Small Bool deriving (Eq, Show)
+```
+
+2. Cardinality is 258 (256 + 2)
+```haskell
+import Data.Int
+data NumberOrBool = Numba Int8 | BoolyBool Bool deriving (Eq, Show)
+
+-- parentheses due to syntactic
+-- collision between (-) minus
+-- and the negate function
+let myNumba = Numba (-128)
+```
+
+## How Does Your Garden Grow
+
+1. Given the type
+```haskell
+data FlowerType = Gardenia | Daisy | Rose | Lilac deriving Show
+type Gardener = String
+data Garden = Garden Gardener FlowerType deriving Show
+```
+
+What is the sum of products normal form of Garden?
+```haskell
+type Gardener = String
+data Garden = Gardenia Gardener |
+              Daisy  Gardener   |
+              Rose Gardener     |
+              Lilac Gardener deriving Show
+```
+
+## Programmers
+
+`programmers.hs`
