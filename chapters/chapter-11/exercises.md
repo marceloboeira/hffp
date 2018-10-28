@@ -124,3 +124,71 @@ data Garden = Gardenia Gardener |
 ## Programmers
 
 `programmers.hs`
+
+## Exponentiation in what order?
+
+```haskell
+data Quantum = Yes | No | Both deriving (Eq, Show)
+
+convert0 :: Quantum -> Bool
+convert0 Yes  = True
+convert0 No   = True
+convert0 Both = True
+
+convert1 Yes  = False
+convert1 No   = False
+convert1 Both = False
+
+convert2 Yes  = True
+convert2 No   = True
+convert2 Both = False
+
+convert3 Yes  = True
+convert3 No   = False
+convert3 Both = True
+
+convert4 Yes  = False
+convert4 No   = True
+convert4 Both = False
+
+convert5 Yes  = True
+convert5 No   = False
+convert5 Both = False
+
+convert6 Yes  = False
+convert6 No   = True
+convert6 Both = True
+
+convert7 Yes  = False
+convert7 No   = True
+convert7 Both = False
+```
+
+## The Quad
+
+```haskell
+-- 1.
+data Quad = One | Two | Three | Four deriving (Eq, Show)
+eQuad :: Either Quad Quad
+-- 4 + 4 = 8
+
+-- 2.
+prodQuad :: (Quad, Quad)
+-- 4 * 4 = 16
+
+-- 3.
+funcQuad :: Quad -> Quad
+-- 4^4 = 256
+
+-- 4.
+prodTBool :: (Bool, Bool, Bool)
+-- 2 * 2 * 2 = 8
+
+-- 5.
+gTwo :: Bool -> Bool -> Bool
+-- (2^2)^2 = 16
+
+-- 6.
+fTwo :: Bool -> Quad -> Quad
+-- (2 ^ 4) ^ 4 = 65536
+```
