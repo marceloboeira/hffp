@@ -192,3 +192,7 @@ gTwo :: Bool -> Bool -> Bool
 fTwo :: Bool -> Quad -> Quad
 -- (2 ^ 4) ^ 4 = 65536
 ```
+
+## Write Map for a BinaryTree / Convert a BinaryTree to List / Write foldr for BinaryTree
+
+`Binary.hs`
