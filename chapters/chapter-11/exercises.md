@@ -196,3 +196,11 @@ fTwo :: Bool -> Quad -> Quad
 ## Write Map for a BinaryTree / Convert a BinaryTree to List / Write foldr for BinaryTree
 
 `Binary.hs`
+
+## Chapter Exercises
+
+1. a) Weekday is a type with five data constructors
+2. c) `f :: Weekday -> String`
+3. b) must begin with a capital letter
+4. c) delivers the final element of xs
+
