@@ -211,3 +211,7 @@ See `Vigenere.hs`
 ## As Patterns / Language Exercises
 
 See `As.hs`
+
+## Hutton's Razor
+
+See `Razor.hs`
