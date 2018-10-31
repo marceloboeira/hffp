@@ -206,4 +206,8 @@ fTwo :: Bool -> Quad -> Quad
 
 ## Ciphers
 
-`Vigenere.hs`
+See `Vigenere.hs`
+
+## As Patterns / Language Exercises
+
+See `As.hs`
