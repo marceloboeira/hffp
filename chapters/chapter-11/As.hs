@@ -28,4 +28,8 @@ capitalizeWord (x:xs) = (toUpper x) : xs
 
 -- 2
 capitalizeParagraph :: String -> String
-capitalizeParagraph = (intercalate " ") . (map capitalizeWord) . words
+capitalizeParagraph p = go (capitalizeWord p)
+  where
+    go [] = []
+    go ('.':' ':xs) = ". " ++ (go $ capitalizeWord xs)
+    go (x:xs) = x : go xs
