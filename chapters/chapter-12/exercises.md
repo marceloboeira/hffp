@@ -20,3 +20,7 @@ See `nat.hs`
 ## Small library for Maybe
 
 See `maybe.hs`
+
+## Small library for Either
+
+See `either.hs`
