@@ -12,3 +12,7 @@ See `string.hs`
 ## Validate the Word
 
 See `word.hs`
+
+## It's only natural
+
+See `nat.hs`
