@@ -16,3 +16,7 @@ See `word.hs`
 ## It's only natural
 
 See `nat.hs`
+
+## Small library for Maybe
+
+See `maybe.hs`
