@@ -24,3 +24,8 @@ See `maybe.hs`
 ## Small library for Either
 
 See `either.hs`
+
+
+## Unfold
+
+See `unfold.hs`
