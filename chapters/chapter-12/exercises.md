@@ -29,3 +29,7 @@ See `either.hs`
 ## Unfold
 
 See `unfold.hs`
+
+## BinaryTree
+
+See `tree.hs`
