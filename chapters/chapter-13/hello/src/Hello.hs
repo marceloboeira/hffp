@@ -2,6 +2,6 @@ module Hello
   ( sayHello )
     where
 
-sayHello :: IO ()
-sayHello = do
-  putStrLn "Hello World"
+sayHello :: String -> IO ()
+sayHello name = do
+  putStrLn ("Hey " ++ name ++ "!")
