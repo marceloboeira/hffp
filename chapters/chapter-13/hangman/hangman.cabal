@@ -1,0 +1,23 @@
+name:                hangman
+version:             0.1.0.0
+synopsis:            Playing Hangman
+description:         Really, Playing hangman
+homepage:            https://github.com/marceloboeira/hffp/tree/master/chapters/chapter-13/hangman
+license:             BSD3
+license-file:        LICENSE
+author:              Marcelo Boeira
+maintainer:          me@marceloboeira.com
+copyright:           2018 Marcelo Boeira
+category:            Game
+build-type:          Simple
+extra-source-files:  data/dictionary.txt
+cabal-version:       >=1.10
+extra-source-files:  README.md
+
+executable hangman
+  hs-source-dirs:      src
+  main-is:             Main.hs
+  default-language:    Haskell2010
+  build-depends:       base >= 4.7 && < 5
+                     , random
+                     , split
