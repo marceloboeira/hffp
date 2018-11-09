@@ -28,7 +28,7 @@ gameWords = do
 
 randomWord :: [String] -> IO String
 randomWord wl = do
-  randomIndex <- randomRIO (0, 50000)
+  randomIndex <- randomRIO (0, (length wl) - 1)
   return $ wl !! randomIndex
 
 randomWord' :: IO String
@@ -57,12 +57,16 @@ renderPuzzleChar (Just c) = c
 fillInCharacter :: Puzzle -> Char -> Puzzle
 fillInCharacter (Puzzle word filledInSoFar s) c =
   Puzzle word newFilledInSoFar (c : s)
-  where zipper guessed wordChar guessChar = if wordChar == guessed then Just wordChar else guessChar
-        newFilledInSoFar = zipWith (zipper c) word filledInSoFar
+  where zipper guessed wordChar guessChar =
+          if wordChar == guessed
+          then Just wordChar
+          else guessChar
+        newFilledInSoFar =
+          zipWith (zipper c) word filledInSoFar
 
 gameOver :: Puzzle -> IO ()
 gameOver (Puzzle wordToGuess _ guessed) =
-  if (length guessed) > 7 then
+  if (length guessed) >= 9 then
     do putStrLn "You lose!"
        putStrLn $ "The word was: " ++ wordToGuess
        exitSuccess
@@ -91,8 +95,8 @@ handleGuess puzzle guess = do
 
 runGame :: Puzzle -> IO ()
 runGame puzzle = forever $ do
-  gameOver puzzle
   gameWin puzzle
+  gameOver puzzle
   putStrLn $ "Current puzzle is: " ++ show puzzle
   putStr "------"
   putStr "Guess a letter: "

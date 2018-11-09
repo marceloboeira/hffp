@@ -13,3 +13,9 @@ See `hello/`
   * a - `Control.Concurrent.MVar, Filesystem.Path.CurrentOS, Control.Concurrent`
   * b - `Filesystem`
   * c - `Control.Monad`
+
+## Chapter Exercises
+
+### Hangman game logic
+
+See `hangman/`
