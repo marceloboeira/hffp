@@ -19,3 +19,10 @@ See `hello/`
 ### Hangman game logic
 
 See `hangman/`
+
+### Modifying code
+
+1. --
+2. `palindrome.hs`
+3. `palindrome.hs`
+4. `person.hs`
