@@ -14,3 +14,4 @@
 * [Chapter 14](chapters/chapter-14/exercises.md)
 * [Chapter 15](chapters/chapter-15/exercises.md)
 * [Chapter 16](chapters/chapter-16/exercises.md)
+* [Chapter 17](chapters/chapter-17/exercises.md)
