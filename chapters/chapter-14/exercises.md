@@ -13,3 +13,7 @@ See `morse/`
 ### Validating numbers into words
 
 See `qc/`
+
+### Using QuickCheck
+
+See `qc/`

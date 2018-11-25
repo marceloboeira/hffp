@@ -21,6 +21,7 @@ library
   build-depends:       base >= 4.7 && < 5
                      , containers
                      , hspec
+                     , QuickCheck
 
 test-suite tests
   ghc-options:         -Wall -fno-warn-orphans
