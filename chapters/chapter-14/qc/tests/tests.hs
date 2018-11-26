@@ -1,10 +1,11 @@
 module WordNumberTest where
 
 import Test.QuickCheck
+import Test.QuickCheck.Gen (oneof, frequency)
 import Test.Hspec
 import WordNumber (digitToWord, digits, wordNumber)
 import Data.List (sort)
-import Data.Char (chr)
+import Data.Char (chr, toUpper)
 
 -- Functions to test
 -- 1
@@ -77,6 +78,26 @@ takeLength n xs = length (take n xs) == n
 
 -- 11
 readShowIdentity x = (read (show x)) == x
+
+-- Idempotence
+twice f = f . f
+fourTimes = twice . twice
+
+capitalizeWord :: String -> String
+capitalizeWord [] = []
+capitalizeWord (x:xs) = (toUpper x) : xs
+
+-- Generators
+data Fool = Foolse | Frooe deriving (Eq, Show)
+data Fool' = Foolse' | Frooe' deriving (Eq, Show)
+
+instance Arbitrary Fool where
+  arbitrary = do
+    oneof [return $ Foolse, return $ Frooe]
+
+instance Arbitrary Fool' where
+  arbitrary =
+    frequency [(2, return $ Foolse'), (1, return $ Frooe')]
 
 main :: IO ()
 main = hspec $ do
@@ -183,3 +204,17 @@ main = hspec $ do
       -- 11
       it "#readShowIdentity" $ do
         forAll (arbitrary :: Gen [Char]) readShowIdentity
+
+      -- Idempotence
+      it "#twice" $ do
+        forAll (arbitrary :: Gen [Char]) $ \x ->
+          (capitalizeWord x == twice capitalizeWord x) && (capitalizeWord x == fourTimes capitalizeWord x)
+      it "#fourTimes" $ do
+        forAll (arbitrary :: Gen [Char]) $ \x ->
+          (sort x == twice sort x) && (sort x == fourTimes sort x)
+
+      -- Fool
+      it "#Fool" $ do
+        forAll (arbitrary :: Gen Fool) $ \x -> x == Frooe || x == Foolse
+      it "#Fool'" $ do
+        forAll (arbitrary :: Gen Fool') $ \x -> x == Frooe' || x == Foolse'

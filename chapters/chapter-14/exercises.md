@@ -17,3 +17,11 @@ See `qc/`
 ### Using QuickCheck
 
 See `qc/`
+
+### Idempotence
+
+See `qc/`
+
+### Make a Gen random generator for the datatype
+
+See `qc/`
