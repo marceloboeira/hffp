@@ -15,3 +15,4 @@
 * [Chapter 15](chapters/chapter-15/exercises.md)
 * [Chapter 16](chapters/chapter-16/exercises.md)
 * [Chapter 17](chapters/chapter-17/exercises.md)
+* [Chapter 18](chapters/chapter-18/exercises.md)
