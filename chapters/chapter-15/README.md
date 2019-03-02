@@ -7,14 +7,12 @@
 See `Booly.hs`.
 
 ```haskell
-(False' :: Booly [Char]) <> (True' :: Booly [Char])
+False' <> True'
 #=> False'
 
-(True' :: Booly [Char]) <> (True' :: Booly [Char])
+True' <> True'
 #=> True'
 ```
-
-We have to force a type for `a` since it's not on the subtypes, the Semigroup/Monoid instance can't be inferred.
 
 ## Exercise: Optional Monoid
 
