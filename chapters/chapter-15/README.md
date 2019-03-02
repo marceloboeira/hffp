@@ -19,3 +19,8 @@ We have to force a type for `a` since it's not on the subtypes, the Semigroup/Mo
 ## Exercise: Optional Monoid
 
 See `Option.hs`.
+
+```haskell
+Some "Hello" <> None <> Some " World!"
+#=> Some "Hello World!"
+```
