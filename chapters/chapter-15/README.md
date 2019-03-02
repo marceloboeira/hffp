@@ -33,3 +33,13 @@ See `Listy.hs`.
 (Listy ['m']) <>  (Listy ['7'])
 #=> Listy "m7"
 ```
+
+## Exercise: Madness
+
+See `Madness.hs`.
+
+```haskell
+madlibbin' ("DON'T" :: Exclamation) ("loudly" :: Adverb) ("quickly" :: Noun) ("pretty" :: Adjective)
+
+#=> "DON'T! she said loudly as she jumped into her car quickly and drove off with her pretty wife."
+```
