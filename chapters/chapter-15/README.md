@@ -24,3 +24,12 @@ See `Option.hs`.
 Some "Hello" <> None <> Some " World!"
 #=> Some "Hello World!"
 ```
+
+## Listy orphan instance
+
+See `Listy.hs`.
+
+```haskell
+(Listy ['m']) <>  (Listy ['7'])
+#=> Listy "m7"
+```
