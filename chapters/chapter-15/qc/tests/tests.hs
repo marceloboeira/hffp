@@ -52,7 +52,7 @@ instance Arbitrary a => Arbitrary (First' a) where
     oneof [return (First' (Some a)), return (First' None)]
 
 -- Chapter Exercises
--- Semigroup Exercises
+-- Semigroup/Monoid Exercises
 -- 1.
 semigroupAssoc :: (Eq s, Semigroup s) => s -> s -> s -> Bool
 semigroupAssoc a b c = (a <> (b <> c)) == ((a <> b) <> c)
@@ -62,6 +62,10 @@ data Trivial = Trivial deriving (Eq, Show)
 instance Semigroup Trivial where
   (<>) _ _ = Trivial
 
+instance Monoid Trivial where
+  mempty = Trivial
+  mappend = (<>)
+
 instance Arbitrary Trivial where
   arbitrary = return Trivial
 
@@ -70,6 +74,10 @@ newtype Identity a = Identity a deriving (Eq, Show)
 
 instance Semigroup a => Semigroup (Identity a) where
   (<>) (Identity i) (Identity i') = Identity (i <> i')
+
+instance Monoid a => Monoid (Identity a) where
+  mempty = Identity mempty
+  mappend = (<>)
 
 instance Arbitrary a => Arbitrary (Identity a) where
   arbitrary = do
@@ -81,6 +89,10 @@ data Two a b = Two a b deriving (Eq, Show)
 
 instance (Semigroup a, Semigroup b) => Semigroup (Two a b) where
   (<>) (Two a' b') (Two a'' b'') = Two (a' <> a'') (b' <> b'')
+
+instance (Monoid a, Monoid b) => Monoid (Two a b) where
+  mempty = Two mempty mempty
+  mappend = (<>)
 
 instance (Arbitrary a, Arbitrary b) => Arbitrary (Two a b) where
   arbitrary = do
@@ -94,6 +106,10 @@ data Three a b c = Three a b c deriving (Eq, Show)
 instance (Semigroup a, Semigroup b, Semigroup c) => Semigroup (Three a b c) where
   (<>) (Three a' b' c') (Three a'' b'' c'') = Three (a' <> a'') (b' <> b'') (c' <> c'')
 
+instance (Monoid a, Monoid b, Monoid c) => Monoid (Three a b c) where
+  mempty = Three mempty mempty mempty
+  mappend = (<>)
+
 instance (Arbitrary a, Arbitrary b, Arbitrary c) => Arbitrary (Three a b c) where
   arbitrary = do
     i <- arbitrary
@@ -106,6 +122,10 @@ data Four a b c d = Four a b c d deriving (Eq, Show)
 
 instance (Semigroup a, Semigroup b, Semigroup c, Semigroup d) => Semigroup (Four a b c d) where
   (<>) (Four a' b' c' d') (Four a'' b'' c'' d'') = Four (a' <> a'') (b' <> b'') (c' <> c'') (d' <> d'')
+
+instance (Monoid a, Monoid b, Monoid c, Monoid d) => Monoid (Four a b c d) where
+  mempty = Four mempty mempty mempty mempty
+  mappend = (<>)
 
 instance (Arbitrary a, Arbitrary b, Arbitrary c, Arbitrary d) => Arbitrary (Four a b c d) where
   arbitrary = do
@@ -122,6 +142,10 @@ instance Semigroup BoolConj where
   (<>) (BoolConj True) (BoolConj True) = BoolConj True
   (<>) (BoolConj _) (BoolConj _) = BoolConj False
 
+instance Monoid BoolConj where
+  mempty = BoolConj True
+  mappend = (<>)
+
 instance Arbitrary BoolConj where
   arbitrary = frequency [ (1, return (BoolConj True))
                         , (1, return (BoolConj False))
@@ -133,6 +157,10 @@ newtype BoolDisj = BoolDisj Bool deriving (Eq, Show)
 instance Semigroup BoolDisj where
   (<>) (BoolDisj False) (BoolDisj False) = BoolDisj False
   (<>) (BoolDisj _) (BoolDisj _) = BoolDisj True
+
+instance Monoid BoolDisj where
+  mempty = BoolDisj False
+  mappend = (<>)
 
 instance Arbitrary BoolDisj where
   arbitrary = frequency [ (1, return (BoolDisj True))
@@ -163,11 +191,21 @@ instance (Show a, Show b) => Show (Combine a b) where
 instance (Semigroup a, Semigroup b) => Semigroup (Combine a b) where
   (<>) (Combine f) (Combine f') = Combine (\i -> (f i) <> (f' i))
 
+instance (Monoid a, Monoid b) => Monoid (Combine a b) where
+  mempty = Combine (\_ -> mempty)
+  mappend = (<>)
+
 instance (CoArbitrary a, Arbitrary b) => Arbitrary (Combine a b) where
   arbitrary = fmap Combine $ promote (\n -> coarbitrary n arbitrary)
 
 combineAssoc :: (Combine String String) -> (Combine String String) -> (Combine String String) -> String -> Bool
 combineAssoc a b c s = (unCombine (a <> (b <> c)) s) == (unCombine ((a <> b) <> c) s)
+
+combineLeftIdentity :: (Combine String String) -> String -> Bool
+combineLeftIdentity a s = (unCombine (mempty <> a) s) == ((unCombine a) s)
+
+combineRightIdentity :: (Combine String String) -> String -> Bool
+combineRightIdentity a s = (unCombine (a <> mempty) s) == ((unCombine a) s)
 
 -- 10.
 newtype Comp a = Comp { unComp :: (a -> a) }
@@ -178,11 +216,21 @@ instance (Show a) => Show (Comp a) where
 instance (Semigroup a) => Semigroup (Comp a) where
   (<>) (Comp f) (Comp f') = Comp (f . f')
 
+instance (Monoid a) => Monoid (Comp a) where
+  mempty = Comp id
+  mappend = (<>)
+
 instance (CoArbitrary a, Arbitrary a) => Arbitrary (Comp a) where
   arbitrary = fmap Comp $ promote (\n -> coarbitrary n arbitrary)
 
 compAssoc :: (Comp String) -> (Comp String) -> (Comp String) -> String -> Bool
 compAssoc a b c s = (unComp (a <> (b <> c)) s) == (unComp ((a <> b) <> c) s)
+
+compLeftIdentity :: (Comp String) -> String -> Bool
+compLeftIdentity a s = (unComp (mempty <> a) s) == ((unComp a) s)
+
+compRightIdentity :: (Comp String) -> String -> Bool
+compRightIdentity a s = (unComp (a <> mempty) s) == ((unComp a) s)
 
 -- 11.
 data Validation a b = Failure' a | Success' b deriving (Eq, Show)
@@ -261,3 +309,68 @@ main = hspec $ do
     describe "#11-validation" $ do
       it "#associativity" $ do
         quickCheck (semigroupAssoc :: Validation String Int -> Validation String Int -> Validation String Int -> Bool)
+
+  describe "#monoid" $ do
+    describe "#1-trivial" $ do
+      it "#associativity" $ do
+        quickCheck (monoidAssoc :: Trivial -> Trivial -> Trivial -> Bool)
+      it "#leftIdentity" $ do
+        quickCheck (monoidLeftId :: Trivial -> Bool)
+      it "#rightIdentity" $ do
+        quickCheck (monoidRightId :: Trivial -> Bool)
+    describe "#2-identity" $ do
+      it "#associativity" $ do
+        quickCheck (monoidAssoc :: Identity String -> Identity String -> Identity String -> Bool)
+      it "#leftIdentity" $ do
+        quickCheck (monoidLeftId :: Identity String -> Bool)
+      it "#rightIdentity" $ do
+        quickCheck (monoidRightId :: Identity String -> Bool)
+    describe "#3-two" $ do
+      it "#associativity" $ do
+        quickCheck (monoidAssoc :: Two String String -> Two String String -> Two String String -> Bool)
+      it "#leftIdentity" $ do
+        quickCheck (monoidLeftId :: Two String String -> Bool)
+      it "#rightIdentity" $ do
+        quickCheck (monoidRightId :: Two String String -> Bool)
+    describe "#3-three" $ do
+      it "#associativity" $ do
+        quickCheck (monoidAssoc :: Three String String String -> Three String String String  -> Three String String String -> Bool)
+      it "#leftIdentity" $ do
+        quickCheck (monoidLeftId :: Three String String String -> Bool)
+      it "#rightIdentity" $ do
+        quickCheck (monoidRightId :: Three String String String -> Bool)
+    describe "#3-four" $ do
+      it "#associativity" $ do
+        quickCheck (monoidAssoc :: Four String String String String -> Four String String String String -> Four String String String String -> Bool)
+      it "#leftIdentity" $ do
+        quickCheck (monoidLeftId :: Four String String String String -> Bool)
+      it "#rightIdentity" $ do
+        quickCheck (monoidRightId :: Four String String String String -> Bool)
+    describe "#4-bool-conj" $ do
+      it "#associativity" $ do
+        quickCheck (monoidAssoc :: BoolConj -> BoolConj -> BoolConj -> Bool)
+      it "#leftIdentity" $ do
+        quickCheck (monoidLeftId :: BoolConj -> Bool)
+      it "#rightIdentity" $ do
+        quickCheck (monoidRightId :: BoolConj -> Bool)
+    describe "#5-bool-disj" $ do
+      it "#associativity" $ do
+        quickCheck (monoidAssoc :: BoolDisj -> BoolDisj -> BoolDisj -> Bool)
+      it "#leftIdentity" $ do
+        quickCheck (monoidLeftId :: BoolDisj -> Bool)
+      it "#rightIdentity" $ do
+        quickCheck (monoidRightId :: BoolDisj -> Bool)
+    describe "#6-combine" $ do
+      it "#associativity" $ do
+        quickCheck (combineAssoc)
+      it "#leftIdentity" $ do
+        quickCheck (combineLeftIdentity)
+      it "#rightIdentity" $ do
+        quickCheck (combineRightIdentity)
+    describe "#7-comp" $ do
+      it "#associativity" $ do
+        quickCheck (compAssoc)
+      it "#leftIdentity" $ do
+        quickCheck (compLeftIdentity)
+      it "#rightIdentity" $ do
+        quickCheck (compRightIdentity)

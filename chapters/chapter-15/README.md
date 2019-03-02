@@ -54,6 +54,6 @@ See `qc/tests/tests.hs`.
 
 ## Chapter Exercises
 
-### Semigroup
+### Semigroup && Monoid
 
 See `qc/tests/tests.hs`.
