@@ -51,3 +51,9 @@ See `qc/tests/tests.hs`.
 ### Exercise: Maybe Another Monoid
 
 See `qc/tests/tests.hs`.
+
+## Chapter Exercises
+
+### Semigroup
+
+See `qc/tests/tests.hs`.
