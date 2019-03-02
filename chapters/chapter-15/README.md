@@ -43,3 +43,9 @@ madlibbin' ("DON'T" :: Exclamation) ("loudly" :: Adverb) ("quickly" :: Noun) ("p
 
 #=> "DON'T! she said loudly as she jumped into her car quickly and drove off with her pretty wife."
 ```
+
+## QuickCheck
+
+### Monoid Checks
+
+See `qc/tests/tests.hs`.
