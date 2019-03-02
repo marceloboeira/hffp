@@ -248,6 +248,16 @@ instance (Arbitrary a, Arbitrary b) => Arbitrary (Validation a b) where
               , (1, return (Failure' j))
               ]
 
+-- Monoid 8
+newtype Mem s a = Mem { runMem :: s -> (a, s) }
+
+instance (Semigroup a) => Semigroup (Mem s a) where
+  (<>) (Mem (f0)) (Mem f1) = Mem (\s -> (a, s))
+
+instance (Monoid a) => Monoid (Mem s a) where
+  mempty = Mem (\s -> (mempty, s))
+  mappend = (<>)
+
 main :: IO ()
 main = hspec $ do
   describe "#monoid" $ do
