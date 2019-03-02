@@ -47,3 +47,7 @@ madlibbin' ("DON'T" :: Exclamation) ("loudly" :: Adverb) ("quickly" :: Noun) ("p
 ### Monoid Checks
 
 See `qc/tests/tests.hs`.
+
+### Exercise: Maybe Another Monoid
+
+See `qc/tests/tests.hs`.
