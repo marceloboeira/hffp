@@ -47,3 +47,7 @@ First 10
 fmap (+1) (Second 10)
 Second 11
 ```
+
+## Exercises: Instance of Functor
+
+See `qc/tests/tests.hs`.
