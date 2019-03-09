@@ -1,3 +1,6 @@
+{-# LANGUAGE FlexibleInstances #-}
+import Data.Array
+
 -- Write a Functor
 -- 1.
 data Bool = False | True deriving (Eq, Show)
@@ -69,20 +72,16 @@ instance Functor (Quant a) where
   fmap f (Bloor b) = Bloor $ f b
 
 -- 2.
-data K a b = Ka deriving(Eq, Show)
+data K a b = K a deriving(Eq, Show)
 
 instance Functor (K a) where
-  fmap _ _ = Ka
+  fmap _ (K a) = K a
 
 -- 3.
-{-# LANGUAGE FlexibleInstances #-}
-
 newtype Flip f a b = Flip (f b a) deriving (Eq, Show)
 
-newtype K a b = Ka a deriving (Eq, Show)
-
 instance Functor (Flip K a) where
-  fmap f (Flip (Ka x)) = (Flip (Ka (f x)))
+  fmap f (Flip (K a)) = (Flip (K (f a)))
 
 -- 4.
 data EvilGoateeConst a b = GoatyConst b deriving (Eq, Show)
@@ -132,9 +131,9 @@ instance Functor GoatLord where
   fmap f (MoreGoats ga ga' ga'') = MoreGoats (fmap f ga) (fmap f ga') (fmap f ga'')
 
 -- 11.
-data TalkToMe a = Halt | Print String a | Read (String -> a) deriving (Eq, Show)
+data TalkToMe a = Halt | Print String a | Read (String -> a)
 
 instance Functor TalkToMe where
   fmap _ Halt = Halt
-  fmap f (Print String a) = Print String (f a)
+  fmap f (Print s a) = Print s (f a)
   fmap f (Read g) = Read (f . g)
