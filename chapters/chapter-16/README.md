@@ -89,3 +89,7 @@ fmap (+1) (Right 10)
 
 In practice, because of the kind, it has to be `* -> *` and trying to create a functor for `Either` would result on `* -> * -> *`.
 Theoretically, it doens't make much sense to have a functor for Either if it applies the same way to `Left` and `Right`, so we would expect the behavior to be different on each.
+
+## Chapter Exercises
+
+See `ChapterExercises.hs`.
