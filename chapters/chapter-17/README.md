@@ -39,3 +39,24 @@ wrapped <*> (Just "bar")
 wrapped' <*> (Just "bar")
 #=> Just "foobar"
 ```
+
+## Exercises: Identity Instance
+
+See `Identity.hs`.
+
+```haskell
+-- functor-wise
+fmap (+10) (Identity 20)
+#=> Identity 30
+
+(+10) <$> (Identity 20)
+#=> Identity 30
+
+-- applicative-wise
+Identity (+10) <*> Identity 20
+#=> Identity 30
+
+-- with pure
+pure (+) <*> Identity 10 <*> Identity 20
+#=> Identity 30
+```
