@@ -60,3 +60,7 @@ Identity (+10) <*> Identity 20
 pure (+) <*> Identity 10 <*> Identity 20
 #=> Identity 30
 ```
+
+## Exercises: Constant Instance
+
+See `Constant.hs`.
