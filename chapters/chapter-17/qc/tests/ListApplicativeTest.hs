@@ -23,7 +23,6 @@ instance Applicative List where
   (<*>) Nil _ = Nil
   (<*>) _ Nil = Nil
   (<*>) (Cons f lf) v = (f <$> v) <> (lf <*> v)
-  -- (<*>) (Cons f lf) v = (f <$> v)
 
 instance Arbitrary a => Arbitrary (List a) where
   arbitrary = Cons <$> arbitrary <*> arbitrary

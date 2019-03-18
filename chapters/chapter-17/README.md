@@ -73,9 +73,9 @@ See `qc/tests/Apl1.hs` for "ZipList Monoid".
 
 ## Exercises: List Applicative Instance
 
-See `qc/tests/ListApplicative.hs`.
+See `qc/tests/ListApplicativeTest.hs`.
 
-Pseudo-code for the record
+Small reasoning section (for my own record).
 ```haskell
 -- The example expects
 
@@ -136,4 +136,6 @@ fmap (+1) (Cons 1 (Const 2 Nil))
 \╭☞ \╭☞
 ```
 
+## Exercises: ZipList Applicative Instance
 
+See `qc/tests/ZipListApplicativeTest.hs`.
