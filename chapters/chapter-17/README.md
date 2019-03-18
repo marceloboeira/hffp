@@ -139,3 +139,7 @@ fmap (+1) (Cons 1 (Const 2 Nil))
 ## Exercises: ZipList Applicative Instance
 
 See `qc/tests/ZipListApplicativeTest.hs`.
+
+## Exercises: Validation Applicative Instance
+
+See `qc/tests/Validation.hs`.
