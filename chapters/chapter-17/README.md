@@ -143,3 +143,7 @@ See `qc/tests/ZipListApplicativeTest.hs`.
 ## Exercises: Validation Applicative Instance
 
 See `qc/tests/Validation.hs`.
+
+## Chapter Exercises
+
+See `qc/tests/ChapterExercises.hs`.
